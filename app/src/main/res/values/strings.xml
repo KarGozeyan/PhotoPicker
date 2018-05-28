@@ -1,3 +1,12 @@
 <resources>
-    <string name="app_name">PhotoPicker</string>
+    <string name="app_name">Photo Picker</string>
+    <string name="facebook_app_id">2213220155362506</string>
+    <string name="fb_login_protocol_scheme">fb2213220155362506</string>
+
+    <!-- TODO: Remove or change this placeholder text -->
+    <string name="hello_blank_fragment">Hello blank fragment</string>
+
+    <string name="title_activity_intro">IntroActivity</string>
+    <string name="dummy_button">Dummy Button</string>
+    <string name="dummy_content">DUMMY\nCONTENT</string>
 </resources>

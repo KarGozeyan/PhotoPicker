@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="utf-8"?>
+<menu xmlns:android="http://schemas.android.com/apk/res/android">
+    <item
+        android:id="@+id/bnv_menu_albums"
+        android:icon="@drawable/image_multiple"
+        android:title="Album" />
+    <item
+        android:id="@+id/bnv_menu_favorite"
+        android:icon="@drawable/cards_heart"
+        android:title="Favorite" />
+</menu>
