@@ -1,39 +1,52 @@
 <?xml version="1.0" encoding="utf-8"?>
-<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    android:orientation="vertical"
     tools:context=".ui.activities.home.HomeActivity">
 
     <android.support.v7.widget.Toolbar
-        android:visibility="gone"
         android:id="@+id/home_activity_toolbar"
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"
+        android:layout_height="?attr/actionBarSize"
         android:background="@color/colorPrimary"
         app:title="@string/app_name"
         app:titleTextColor="@android:color/white" />
 
-    <FrameLayout
-        android:id="@+id/home_activity_container_march_parent"
+    <android.support.design.widget.CoordinatorLayout
         android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        android:elevation="30dp" />
+        android:layout_height="match_parent">
 
-    <FrameLayout
-        android:id="@+id/home_activity_container"
-        android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        android:layout_above="@id/home_activity_bnv"
-        android:layout_below="@id/home_activity_toolbar" />
+        <FrameLayout
 
-    <android.support.design.widget.BottomNavigationView
-        android:visibility="gone"
-        android:id="@+id/home_activity_bnv"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_alignParentBottom="true"
-        android:background="@android:color/white"
-        app:menu="@menu/bnv_menu" />
-</RelativeLayout>
+            android:id="@+id/home_activity_container"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            app:layout_behavior="@string/appbar_scrolling_view_behavior" />
+
+        <android.support.design.widget.FloatingActionButton
+            android:id="@+id/home_activity_fab"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="top"
+            android:src="@drawable/plus"
+            app:fabSize="normal"
+            app:layout_anchor="@id/home_activity_bnv"
+            app:layout_anchorGravity="top|end"
+            app:useCompatPadding="true" />
+
+        <android.support.design.widget.BottomNavigationView
+            android:id="@+id/home_activity_bnv"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_alignParentBottom="true"
+            android:layout_gravity="top"
+            android:background="@android:color/white"
+            app:layout_anchor="@id/home_activity_container"
+            app:layout_anchorGravity="bottom"
+            app:menu="@menu/bnv_menu" />
+
+    </android.support.design.widget.CoordinatorLayout>
+</LinearLayout>

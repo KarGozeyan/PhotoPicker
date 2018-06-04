@@ -44,4 +44,11 @@ dependencies {
     implementation 'com.facebook.android:facebook-android-sdk:4.33.0'
     // View Pager Indicator
     implementation 'me.relex:circleindicator:1.2.2@aar'
+    // Picasso
+    implementation 'com.squareup.picasso:picasso:2.71828'
+    // Pinterest
+    api project(':pdk')
+    // Volley
+    implementation 'com.mcxiaoke.volley:library:1.0.19'
+
 }
