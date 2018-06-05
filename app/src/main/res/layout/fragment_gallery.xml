@@ -4,8 +4,17 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    android:background="#ffffff"
+    android:clickable="true"
+    android:focusable="true"
     tools:context=".ui.fragments.gallery.GalleryFragment">
 
+    <TextView
+        android:layout_gravity="center"
+        android:text="HHHHHHHHHHHh"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content" />
+    
     <android.support.v7.widget.RecyclerView
         android:id="@+id/album_fragment_rv"
         android:layout_width="match_parent"

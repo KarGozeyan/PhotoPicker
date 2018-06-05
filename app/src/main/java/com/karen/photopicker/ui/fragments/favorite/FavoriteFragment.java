@@ -23,7 +23,7 @@ import org.json.JSONObject;
  */
 public class FavoriteFragment extends MvpFragment<FavoriteFragmentContract.View, FavoriteFragmentContract.Presenter>
         implements FavoriteFragmentContract.View {
-    private static final String TAG = "FavoriteFragment";
+    public static final String TAG = "FavoriteFragment";
 
     public FavoriteFragment() {
         // Required empty public constructor

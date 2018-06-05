@@ -33,10 +33,11 @@ import java.util.List;
  */
 public class GalleryFragment extends MvpFragment<GalleryFragmentContract.View, GalleryFragmentContract.Presenter>
         implements GalleryFragmentContract.View, View.OnClickListener {
-    private static final String TAG = "GalleryFragment";
+
     private RecyclerView rv;
     private List<Gallery> galleryList = new ArrayList<>();
     private GalleryAdapter adapter;
+    public static final String TAG = "GalleryFragment";
 
     public GalleryFragment() {
         // Required empty public constructor
