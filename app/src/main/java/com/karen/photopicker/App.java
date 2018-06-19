@@ -5,11 +5,16 @@ import android.app.Activity;
 import android.app.Application;
 import android.app.LauncherActivity;
 
-import com.pinterest.android.pdk.PDKClient;
-
 public class App extends Application {
+    private static App instance = new App();
+
     @Override
     public void onCreate() {
         super.onCreate();
+        instance = this;
+    }
+
+    public static App getInstance() {
+        return instance;
     }
 }

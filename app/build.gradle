@@ -35,20 +35,8 @@ dependencies {
     implementation "com.android.support:cardview-v7:${supportLibVersion}"
     // Mosby
     implementation 'com.hannesdorfmann.mosby3:mvp:3.1.0'
-    // ButterKnife
-    implementation 'com.jakewharton:butterknife:8.8.1'
-    annotationProcessor 'com.jakewharton:butterknife-compiler:8.8.1'
-    // Like Button
-    implementation 'com.github.jd-alexander:LikeButton:0.2.3'
-    // Facebook
-    implementation 'com.facebook.android:facebook-android-sdk:4.33.0'
     // View Pager Indicator
     implementation 'me.relex:circleindicator:1.2.2@aar'
     // Picasso
     implementation 'com.squareup.picasso:picasso:2.71828'
-    // Pinterest
-    api project(':pdk')
-    // Volley
-    implementation 'com.mcxiaoke.volley:library:1.0.19'
-
 }

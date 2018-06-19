@@ -2,8 +2,8 @@
 <menu xmlns:android="http://schemas.android.com/apk/res/android">
     <item
         android:id="@+id/bnv_menu_albums"
-        android:icon="@drawable/image_multiple"
-        android:title="Galleries" />
+        android:icon="@drawable/dashboard"
+        android:title="Photos" />
     <item
         android:id="@+id/bnv_menu_favorite"
         android:icon="@drawable/cards_heart"
