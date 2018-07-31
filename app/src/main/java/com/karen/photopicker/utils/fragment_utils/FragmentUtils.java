@@ -1,4 +1,4 @@
-package com.karen.photopicker.fragment_utils;
+package com.karen.photopicker.utils.fragment_utils;
 
 import android.support.v4.app.Fragment;
 import android.support.v4.app.FragmentManager;

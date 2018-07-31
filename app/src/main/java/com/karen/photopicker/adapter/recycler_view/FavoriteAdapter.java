@@ -11,21 +11,21 @@ import android.widget.CompoundButton;
 import android.widget.ImageView;
 
 import com.karen.photopicker.R;
-import com.karen.photopicker.models.favorite_link.Favorite;
+import com.karen.photopicker.models.link.FavoriteStorage;
 import com.karen.photopicker.models.link.Link;
 import com.karen.photopicker.models.link.LinkStorage;
 import com.karen.photopicker.ui.fragments.favorite.FavAdapterMethods;
-import com.squareup.picasso.Picasso;
 
+import java.util.ArrayList;
 import java.util.List;
 
 public class FavoriteAdapter extends RecyclerView.Adapter<FavoriteAdapter.FavoriteHolder> {
-    private List<Favorite> links;
+    private List<String> links;
     private FavAdapterMethods methods;
 
-    public FavoriteAdapter(List<Favorite> links, FavAdapterMethods methods) {
-        this.links = links;
+    public FavoriteAdapter(List<String> links, FavAdapterMethods methods) {
         this.methods = methods;
+        this.links = links;
     }
 
     @NonNull
@@ -36,26 +36,12 @@ public class FavoriteAdapter extends RecyclerView.Adapter<FavoriteAdapter.Favori
 
     @Override
     public void onBindViewHolder(@NonNull final FavoriteHolder holder, int position) {
-        final Favorite favorite = links.get(position);
-        methods.loadImages(favorite.getLink(), holder.photo);
-        holder.like.setChecked(true);
+        final String link = links.get(position);
+        methods.loadImages(link, holder.photo);
         holder.like.setOnCheckedChangeListener(new CompoundButton.OnCheckedChangeListener() {
             @Override
             public void onCheckedChanged(CompoundButton buttonView, boolean isChecked) {
-                if (!isChecked) {
-                    links.remove(holder.getAdapterPosition());
-                    notifyItemRemoved(holder.getAdapterPosition());
-                    List<Link> list = LinkStorage.restore().getLinks();
-                    Link item = getCurrentItem(favorite.getLink(), list);
-                    if (item != null){
-                        int pos = links.indexOf(item);
-                        Log.e("POSITION", "onCheckedChanged: " + pos );
-                        item.setFavorite(false);
-                        list.set(pos, item);
-                        new LinkStorage(list);
-                    }
-
-                }
+                methods.removeFromFavorites(link, holder.getAdapterPosition());
             }
         });
     }
@@ -63,24 +49,6 @@ public class FavoriteAdapter extends RecyclerView.Adapter<FavoriteAdapter.Favori
     @Override
     public int getItemCount() {
         return links.size();
-    }
-
-    private int getIndexOfCurrentItem(String url, List<Link> list) {
-        for (int i = 0; i < list.size(); i++) {
-            if (url.equals(list.get(i).getUrl())) {
-                return i;
-            }
-        }
-        return 0;
-    }
-
-    private Link getCurrentItem(String url, List<Link> list) {
-        for (Link link : list) {
-            if (url.equals(link.getUrl())) {
-                return link;
-            }
-        }
-        return null;
     }
 
     class FavoriteHolder extends RecyclerView.ViewHolder {
@@ -92,8 +60,8 @@ public class FavoriteAdapter extends RecyclerView.Adapter<FavoriteAdapter.Favori
 
             photo = itemView.findViewById(R.id.photo);
             like = itemView.findViewById(R.id.like);
+            like.setChecked(true);
             share = itemView.findViewById(R.id.share);
         }
     }
-
 }

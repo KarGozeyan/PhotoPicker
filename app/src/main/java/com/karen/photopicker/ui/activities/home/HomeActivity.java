@@ -9,14 +9,15 @@ import android.view.MenuItem;
 
 import com.hannesdorfmann.mosby3.mvp.MvpActivity;
 import com.karen.photopicker.R;
-import com.karen.photopicker.fragment_utils.FragmentTag;
-import com.karen.photopicker.fragment_utils.FragmentUtils;
+import com.karen.photopicker.utils.fragment_utils.FragmentTag;
+import com.karen.photopicker.utils.fragment_utils.FragmentUtils;
 import com.karen.photopicker.ui.fragments.favorite.FavoriteFragment;
 import com.karen.photopicker.ui.fragments.gallery.GalleryFragment;
 
-import java.util.ArrayList;
 import java.util.HashMap;
-import java.util.List;
+
+import static android.view.View.GONE;
+import static android.view.View.VISIBLE;
 
 public class HomeActivity extends MvpActivity<HomeActivityContract.View, HomeActivityContract.Presenter>
         implements HomeActivityContract.View, BottomNavigationView.OnNavigationItemSelectedListener {
@@ -57,5 +58,25 @@ public class HomeActivity extends MvpActivity<HomeActivityContract.View, HomeAct
                 return true;
         }
         return false;
+    }
+
+    @Override
+    public void hideBottomNavigationView() {
+        bnv.setVisibility(GONE);
+    }
+
+    @Override
+    public void showBottomNavigationView() {
+        bnv.setVisibility(VISIBLE);
+    }
+
+    @Override
+    public void hideToolbar() {
+        getSupportActionBar().hide();
+    }
+
+    @Override
+    public void showToolbar() {
+        getSupportActionBar().show();
     }
 }

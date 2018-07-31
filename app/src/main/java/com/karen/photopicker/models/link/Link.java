@@ -1,5 +1,8 @@
 package com.karen.photopicker.models.link;
 
+import android.os.Parcel;
+import android.os.Parcelable;
+
 import java.io.Serializable;
 
 public class Link implements Serializable {
