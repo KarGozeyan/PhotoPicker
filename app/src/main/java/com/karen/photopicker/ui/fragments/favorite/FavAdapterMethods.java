@@ -14,4 +14,6 @@ public interface FavAdapterMethods {
     Link getItemByUrl(String url, List<Link> list);
 
     void cache(List<Link> links, List<String> favorites, int pos);
+
+    void fullscreen(int position, List<String> links);
 }

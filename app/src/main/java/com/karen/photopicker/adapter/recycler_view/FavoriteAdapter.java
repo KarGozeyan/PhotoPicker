@@ -44,6 +44,12 @@ public class FavoriteAdapter extends RecyclerView.Adapter<FavoriteAdapter.Favori
                 methods.removeFromFavorites(link, holder.getAdapterPosition());
             }
         });
+        holder.photo.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                methods.fullscreen(holder.getAdapterPosition(), links);
+            }
+        });
     }
 
     @Override

@@ -20,6 +20,7 @@ import com.karen.photopicker.adapter.recycler_view.FavoriteAdapter;
 import com.karen.photopicker.models.link.FavoriteStorage;
 import com.karen.photopicker.models.link.Link;
 import com.karen.photopicker.models.link.LinkStorage;
+import com.karen.photopicker.ui.fragments.full_screeen.FullScreen;
 import com.karen.photopicker.ui.fragments.gallery.GalleryFragment;
 import com.squareup.picasso.Picasso;
 
@@ -121,6 +122,22 @@ public class FavoriteFragment extends MvpFragment<FavoriteFragmentContract.View,
             FavoriteFragment fragment = (FavoriteFragment) getActivity().getSupportFragmentManager().findFragmentByTag("Gallery");
             fragment.updateAdapter();
         }
+    }
+
+    @Override
+    public void fullscreen(int position, List<String> links) {
+        List<Link> newList = new ArrayList<>();
+        for (String link : links) {
+            Link newLink = new Link(link);
+            newLink.setFavorite(true);
+            newList.add(newLink);
+        }
+        getActivity()
+                .getSupportFragmentManager()
+                .beginTransaction()
+                .replace(R.id.home_activity_container, FullScreen.newInstance(position, (ArrayList) newList))
+                .addToBackStack(null)
+                .commit();
     }
 
     @Override

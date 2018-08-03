@@ -22,6 +22,7 @@ import com.karen.photopicker.ui.activities.home.HomeActivity;
 import com.squareup.picasso.Picasso;
 
 import java.io.Serializable;
+import java.util.ArrayList;
 import java.util.List;
 
 /**
@@ -29,16 +30,17 @@ import java.util.List;
  */
 public class FullScreen extends Fragment implements FullScreenMethods {
     private static final String KEY_POSITION = "POSITION";
+    private static final String KEY_LINKS = "LINKS";
 
     public FullScreen() {
         // Required empty public constructor
     }
 
-    public static FullScreen newInstance(int position,List<Link> obj) {
+    public static FullScreen newInstance(int position, ArrayList<Link> links) {
 
         Bundle args = new Bundle();
         args.putInt(KEY_POSITION, position);
-        args.putSerializable("KEY", (Serializable) obj);
+        args.putSerializable(KEY_LINKS, links);
         FullScreen fragment = new FullScreen();
         fragment.setArguments(args);
         return fragment;
@@ -56,7 +58,7 @@ public class FullScreen extends Fragment implements FullScreenMethods {
         super.onViewCreated(view, savedInstanceState);
         ((HomeActivity) getActivity()).hideBottomNavigationView();
         ((HomeActivity) getActivity()).hideToolbar();
-        List<Link> links = LinkStorage.restore().getLinks();
+        List<Link> links = (List) getArguments().getSerializable(KEY_LINKS);
         ViewPager pager = view.findViewById(R.id.full_screen_pager);
         pager.setAdapter(new FullScreenAdapter(getContext(), links, this));
         pager.setCurrentItem(getArguments().getInt(KEY_POSITION));

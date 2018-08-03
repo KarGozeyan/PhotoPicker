@@ -120,7 +120,7 @@ public class GalleryFragment extends MvpFragment<GalleryFragmentContract.View, G
         getActivity()
                 .getSupportFragmentManager()
                 .beginTransaction()
-                .add(R.id.home_activity_container, FullScreen.newInstance(position,list))
+                .add(R.id.home_activity_container, FullScreen.newInstance(position,(ArrayList) list))
                 .addToBackStack(null)
                 .commit();
     }
