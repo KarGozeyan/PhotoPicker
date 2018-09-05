@@ -1,5 +1,6 @@
 package com.karen.photopicker.ui.fragments.gallery;
 
+import android.graphics.Bitmap;
 import android.widget.CheckBox;
 import android.widget.ImageView;
 
@@ -15,4 +16,6 @@ public interface PhotoAdapterMethods {
     void loadImages(String url, ImageView target);
 
     void cache(List<Link> links, List<String> favorites);
+
+    void share(ImageView img);
 }

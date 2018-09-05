@@ -2,6 +2,7 @@ package com.karen.photopicker.adapter.recycler_view;
 
 import android.content.Context;
 import android.content.Intent;
+import android.graphics.drawable.BitmapDrawable;
 import android.support.annotation.NonNull;
 import android.support.v7.widget.RecyclerView;
 import android.view.LayoutInflater;
@@ -45,7 +46,7 @@ public class PhotoAdapter extends RecyclerView.Adapter<PhotoAdapter.PhotoHolder>
         holder.photo.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                methods.fullScreen(holder.getAdapterPosition(),links);
+                methods.fullScreen(holder.getAdapterPosition(), links);
             }
         });
         holder.like.setOnCheckedChangeListener(new CompoundButton.OnCheckedChangeListener() {
@@ -69,9 +70,7 @@ public class PhotoAdapter extends RecyclerView.Adapter<PhotoAdapter.PhotoHolder>
         holder.share.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                Intent i = new Intent(Intent.ACTION_SEND);
-                i.setType("image/png");
-                context.startActivity(i);
+                methods.share(holder.photo);
             }
         });
     }
@@ -79,16 +78,6 @@ public class PhotoAdapter extends RecyclerView.Adapter<PhotoAdapter.PhotoHolder>
     @Override
     public int getItemCount() {
         return links.size();
-    }
-
-    private int findItemBtUrl(String url, List<Link> list) {
-        int pos = 0;
-        for (int i = 0; i < list.size(); i++) {
-            if (list.get(i).getUrl().equals(url)) {
-                pos = i;
-            }
-        }
-        return pos;
     }
 
     class PhotoHolder extends RecyclerView.ViewHolder {

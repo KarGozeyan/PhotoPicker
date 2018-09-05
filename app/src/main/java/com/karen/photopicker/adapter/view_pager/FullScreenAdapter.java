@@ -10,6 +10,7 @@ import android.widget.CheckBox;
 import android.widget.CompoundButton;
 import android.widget.ImageView;
 
+import com.github.chrisbanes.photoview.PhotoView;
 import com.karen.photopicker.R;
 import com.karen.photopicker.models.link.FavoriteStorage;
 import com.karen.photopicker.models.link.Link;
@@ -46,7 +47,8 @@ public class FullScreenAdapter extends PagerAdapter {
         final Link link = links.get(position);
 
         View layout = LayoutInflater.from(context).inflate(R.layout.full_screen_item, container, false);
-        ImageView photo, share;
+        PhotoView photo;
+        ImageView share;
         CheckBox like;
         photo = layout.findViewById(R.id.photo_full_screen);
         like = layout.findViewById(R.id.favorite_full_screen);
