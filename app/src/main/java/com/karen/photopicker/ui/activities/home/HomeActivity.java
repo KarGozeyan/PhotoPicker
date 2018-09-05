@@ -51,10 +51,13 @@ public class HomeActivity extends MvpActivity<HomeActivityContract.View, HomeAct
     public boolean onNavigationItemSelected(@NonNull MenuItem item) {
         switch (item.getItemId()) {
             case R.id.bnv_menu_albums:
-                FragmentUtils.showSelectedFragment(new GalleryFragment(),FragmentTag.GALLERY,getSupportFragmentManager(),fragmentMap);
+                FragmentUtils.showSelectedFragment(new GalleryFragment(), FragmentTag.GALLERY, getSupportFragmentManager(), fragmentMap);
+                GalleryFragment fragment = (GalleryFragment) fragmentMap.get(FragmentTag.GALLERY);
+                if (fragment != null)
+                    fragment.updateAdapter();
                 return true;
             case R.id.bnv_menu_favorite:
-                FragmentUtils.showSelectedFragment(new FavoriteFragment(),FragmentTag.FAVORITE,getSupportFragmentManager(),fragmentMap);
+                FragmentUtils.showSelectedFragment(new FavoriteFragment(), FragmentTag.FAVORITE, getSupportFragmentManager(), fragmentMap);
                 return true;
         }
         return false;

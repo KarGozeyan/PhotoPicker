@@ -183,9 +183,14 @@ public class GalleryFragment extends MvpFragment<GalleryFragmentContract.View, G
             FavoriteFragment fragment = (FavoriteFragment) getActivity().getSupportFragmentManager().findFragmentByTag("Favorite");
             fragment.updateAdapter();
         }
+        Log.e("TAG", "cache: ");
     }
 
     public void updateAdapter() {
-        adapter.notifyDataSetChanged();
+        if (adapter != null) {
+            adapter.notifyDataSetChanged();
+            Log.e("TAG", "updated");
+        }
     }
+
 }

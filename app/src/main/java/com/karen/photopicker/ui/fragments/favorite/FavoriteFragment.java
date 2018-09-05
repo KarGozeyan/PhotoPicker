@@ -118,10 +118,6 @@ public class FavoriteFragment extends MvpFragment<FavoriteFragmentContract.View,
         adapter.notifyItemRemoved(pos);
         new LinkStorage(links);
         new FavoriteStorage(favorites);
-        if (getActivity().getSupportFragmentManager().findFragmentByTag("Gallery") != null) {
-            FavoriteFragment fragment = (FavoriteFragment) getActivity().getSupportFragmentManager().findFragmentByTag("Gallery");
-            fragment.updateAdapter();
-        }
     }
 
     @Override

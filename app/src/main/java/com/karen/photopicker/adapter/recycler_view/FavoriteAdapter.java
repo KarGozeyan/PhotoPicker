@@ -38,9 +38,10 @@ public class FavoriteAdapter extends RecyclerView.Adapter<FavoriteAdapter.Favori
     public void onBindViewHolder(@NonNull final FavoriteHolder holder, int position) {
         final String link = links.get(position);
         methods.loadImages(link, holder.photo);
-        holder.like.setOnCheckedChangeListener(new CompoundButton.OnCheckedChangeListener() {
+        holder.like.setChecked(true);
+        holder.like.setOnClickListener(new View.OnClickListener() {
             @Override
-            public void onCheckedChanged(CompoundButton buttonView, boolean isChecked) {
+            public void onClick(View view) {
                 methods.removeFromFavorites(link, holder.getAdapterPosition());
             }
         });

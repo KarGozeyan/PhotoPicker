@@ -42,28 +42,50 @@ public class PhotoAdapter extends RecyclerView.Adapter<PhotoAdapter.PhotoHolder>
     public void onBindViewHolder(@NonNull final PhotoHolder holder, int position) {
         final Link link = links.get(position);
         methods.loadImages(link.getUrl(), holder.photo);
-        methods.setCheck(holder.like, link.isFavorite());
+
+        if (link.isFavorite()) {
+            methods.setCheck(holder.like, true);
+        } else {
+            methods.setCheck(holder.like, false);
+        }
         holder.photo.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
                 methods.fullScreen(holder.getAdapterPosition(), links);
             }
         });
-        holder.like.setOnCheckedChangeListener(new CompoundButton.OnCheckedChangeListener() {
+//        holder.like.setOnCheckedChangeListener(new CompoundButton.OnCheckedChangeListener() {
+//            @Override
+//            public void onCheckedChanged(CompoundButton buttonView, boolean isChecked) {
+//                Link newLink = link;
+//                newLink.setFavorite(isChecked);
+//                List<String> favList = new ArrayList<>();
+//                if (FavoriteStorage.restore() != null && FavoriteStorage.restore().getLinks() != null) {
+//                    favList = FavoriteStorage.restore().getLinks();
+//                }
+//                if (isChecked) {
+//                    favList.add(link.getUrl());
+//                } else {
+//                    favList.remove(link.getUrl());
+//                }
+//                links.set(links.indexOf(link), newLink);
+//                methods.cache(links, favList);
+//            }
+//        });
+        holder.like.setOnClickListener(new View.OnClickListener() {
             @Override
-            public void onCheckedChanged(CompoundButton buttonView, boolean isChecked) {
-                Link newLink = link;
-                newLink.setFavorite(isChecked);
+            public void onClick(View view) {
                 List<String> favList = new ArrayList<>();
                 if (FavoriteStorage.restore() != null && FavoriteStorage.restore().getLinks() != null) {
                     favList = FavoriteStorage.restore().getLinks();
                 }
-                if (isChecked) {
-                    favList.add(link.getUrl());
-                } else {
+                if (link.isFavorite()) {
+                    link.setFavorite(false);
                     favList.remove(link.getUrl());
+                } else {
+                    link.setFavorite(true);
+                    favList.add(link.getUrl());
                 }
-                links.set(links.indexOf(link), newLink);
                 methods.cache(links, favList);
             }
         });
